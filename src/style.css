@@ -1,7 +1,10 @@
 body {
   margin: 0;
   width: 100%;
-  backdrop-filter: 5;
+  backdrop-filter: 10;
+  background-image: url('/img/bgm.jpg') !important;
+  background-size: cover;
+
 }
 /*html {
   background-color: rgb(24, 139, 101);
@@ -48,4 +51,44 @@ a {
 a:hover,
 a:active {
   text-decoration: underline !important;
+}
+
+  main {
+    width: 60% !important;
+  }
+
+@media only screen and (max-width: 1200px) {
+  main {
+    width: 75% !important;
+  }
+}
+
+@media only screen and (max-width: 840px) {
+  main {
+    width: 95% !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  main {
+    width: 98% !important;
+  }
+
+  h2 {
+    font-size: 16px !important;
+  }
+
+  h3 {
+    font-size: 20px !important;
+  }
+
+  #description {
+    font-size: 16px !important;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .forecast {
+    width: 75% !important;
+  }
 }

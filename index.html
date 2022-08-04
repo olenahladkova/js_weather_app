@@ -13,11 +13,11 @@
 
     <title>🌧Forecast Online</title>
   </head>
-  <body class="bg-info">
-    <main class="container border rounded mt-4 p-3 shadow-lg w-95 bg-white">
+  <body>
+    <main class="container rounded mt-4 p-3 shadow-lg text-light">
       <div class="row">
         <div class="col-6">
-          <h1 class="text-secondary">
+          <h1 class="text-light">
             <strong id="city"></strong>
           </h1>
         </div>
@@ -25,8 +25,7 @@
           <input
             type="text"
             placeholder="Choose your city"
-            class="form-control bg-info"
-            style="--bs-bg-opacity: 0.5;"
+            class="form-control bg-transparent border shadow text-light"
             id="city-input"
             required
           />
@@ -34,13 +33,13 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <h2 class="text-secondary" id='current-date'></h2>
+          <h2 class="text-light" id='current-date'></h2>
           <br />
         </div>
         <div class="col-6">
           <button
             type="submit"
-            class="form-control bg-primary"
+            class="form-control bg-transparent shadow text-light"
 						id="city-search-button">
 						Search
           </button>
@@ -52,15 +51,15 @@
           
         </div>
         <div class="col-3">
-          <h3 class="text-primary">
+          <h3 class="text-light">
             <strong>
               <span id="temp"></span>
-              <a href="#" id="celsius">°C</a>
+              <a href="#" id="celsius" class="text-light">°C</a>
               /
-              <a href="#" id="fahrenheit">°F</a>
+              <a href="#" id="fahrenheit" class="text-light">°F</a>
             </strong>
           </h3>
-          <ul class="text-primary">
+          <ul class="text-light">
             <li class="fs-4 fw-semibold" id="description"></li>  
             <li id="humidity"></li>
             <li id="wind"></li>
@@ -69,55 +68,55 @@
         <div class="col-6">
           <button
             type="submit"
-            class="form-control bg-warning"
+            class="form-control bg-transparent shadow text-light"
 						id="current-city-button">
 						Current City
           </button>
         </div>
       </div>
-      <div class="row weather-cards text-primary">
+      <div class="row weather-cards text-light justify-content-center">
         <div
-          class="col-sm m-2 p-2 bg-info rounded"
+          class="col-sm m-2 p-2 bg-transparent shadow rounded text-center forecast"
           style="--bs-bg-opacity: 0.5;"
         >
           <h5>Monday</h5>
-          <img src="./img/sun.png" alt="Sunny" class="img-fluid" />
+          <img src="./img/sun.png" alt="Sunny" />
           <h4><strong>31°C</strong></h4>
           <p>Sunny</p>
         </div>
         <div
-          class="col-sm m-2 p-2 bg-info rounded"
+          class="col-sm m-2 p-2 bg-transparent shadow rounded text-center forecast"
           style="--bs-bg-opacity: 0.5;"
         >
           <h5>Tuesday</h5>
-          <img src="./img/sun.png" alt="Sunny" class="img-fluid" />
+          <img src="./img/sun.png" alt="Sunny" />
           <h4><strong>31°C</strong></h4>
           <p>Sunny</p>
         </div>
         <div
-          class="col-sm m-2 p-2 bg-info rounded"
+          class="col-sm m-2 p-2 bg-transparent shadow rounded text-center forecast"
           style="--bs-bg-opacity: 0.5;"
         >
           <h5>Wednesday</h5>
-          <img src="./img/sun.png" alt="Sunny" class="img-fluid" />
+          <img src="./img/sun.png" alt="Sunny" />
           <h4><strong>31°C</strong></h4>
           <p>Sunny</p>
         </div>
         <div
-          class="col-sm m-2 p-2 bg-info rounded"
+          class="col-sm m-2 p-2 bg-transparent shadow rounded text-center forecast"
           style="--bs-bg-opacity: 0.5;"
         >
           <h5>Thurthday</h5>
-          <img src="./img/sun.png" alt="Sunny" class="img-fluid" />
+          <img src="./img/sun.png" alt="Sunny" />
           <h4><strong>31°C</strong></h4>
           <p>Sunny</p>
         </div>
         <div
-          class="col-sm m-2 p-2 bg-info rounded"
+          class="col-sm m-2 p-2 bg-transparent shadow rounded text-center forecast"
           style="--bs-bg-opacity: 0.5;"
         >
           <h5>Friday</h5>
-          <img src="./img/sun.png" alt="Sunny" class="img-fluid" />
+          <img src="./img/sun.png" alt="Sunny" />
           <h4><strong>31°C</strong></h4>
           <p>Sunny</p>
         </div>

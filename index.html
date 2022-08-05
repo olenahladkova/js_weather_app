@@ -21,31 +21,27 @@
           <h1 class="text-light">
             <strong id="city"></strong>
           </h1>
-        </div>
-        <div class="col-6">
-          <input
-            type="search"
-            placeholder="Choose city"
-            class="form-control bg-transparent border shadow text-light"
-            id="city-input"
-            required
-          />
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-6">       
           <ul class="text-light">
             <li class="text-light" id='current-date'></li>
             <li class="fs-6" id="description"></li>  
           </ul>
         </div>
         <div class="col-6">
-          <button
-            type="submit"
-            class="form-control bg-transparent shadow text-light"
-						id="city-search-button">
-						Search
-          </button>
+          <form action="submit">
+            <input
+              type="search"
+              placeholder="Choose city"
+              class="form-control bg-transparent border shadow text-light"
+              id="city-input"
+              required
+            />
+            <button
+              type="submit"
+              class="form-control bg-transparent shadow text-light mt-3"
+              id="city-search-button">
+              Search
+            </button>
+          </form>
         </div>
       </div>
       <div class="row">

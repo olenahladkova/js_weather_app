@@ -98,3 +98,8 @@ a:active {
     width: 75% !important;
   }
 }
+
+.active:hover {
+  text-decoration: none !important;
+  cursor: default !important;
+}

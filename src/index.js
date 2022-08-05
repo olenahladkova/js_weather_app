@@ -6,7 +6,7 @@ let celsius = document.querySelector("#celsius");
 let fahrenheit = document.querySelector("#fahrenheit");
 let cityHeading = document.querySelector("#city");
 let temp = document.querySelector("#temp");
-
+let celsiusTemp = null;
 
 let apiKey = "e38520d0ab3c1731aad20e98add71987";
 
@@ -24,17 +24,18 @@ dateElement.innerHTML = getFormatDate(new Date());
 
 function getFahrenheit(event) {
   event.preventDefault();
-  let countTemp = Number(temp.textContent);
-  let newTemperature = Math.floor(countTemp * 1.8 + 32);
-  temp.innerHTML = newTemperature;
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+  let newTemp = Math.floor(celsiusTemp * 1.8 + 32);
+  temp.innerHTML = newTemp;
 }
 fahrenheit.addEventListener("click", getFahrenheit);
 
 function getCelsius(event) {
   event.preventDefault();
-  let countTemp = Number(temp.textContent);
-  let newTemperature = Math.ceil((countTemp - 32) / 1.8);
-  temp.innerHTML = newTemperature;
+  fahrenheit.classList.remove("active");
+  celsius.classList.add("active");
+  temp.innerHTML = celsiusTemp;
 }
 celsius.addEventListener("click", getCelsius);
 
@@ -43,8 +44,8 @@ function showWeather(response) {
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let icon = document.querySelector("#main-icon");
-  let roundTemp = Math.round(response.data.main.temp);
-  temp.innerHTML = roundTemp;
+  celsiusTemp = Math.round(response.data.main.temp);
+  temp.innerHTML = celsiusTemp;
   description.innerHTML = `${response.data.weather[0].main}`;
   humidity.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   wind.innerHTML = `Wind: ${response.data.wind.speed} m/s`;
@@ -85,5 +86,3 @@ function currentCity() {
 currentCity();
 buttonCurent.addEventListener("click", currentCity);
 
-
-//change behavior of units

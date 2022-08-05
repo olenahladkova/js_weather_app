@@ -1,30 +1,26 @@
 //variables
 let buttonSearch = document.querySelector("#city-search-button");
 let buttonCurent = document.querySelector("#current-city-button");
-let date = document.querySelector("#current-date");
+let dateElement = document.querySelector("#current-date");
 let celsius = document.querySelector("#celsius");
 let fahrenheit = document.querySelector("#fahrenheit");
 let cityHeading = document.querySelector("#city");
 let temp = document.querySelector("#temp");
-let description = document.querySelector("#description");
-let precipitation = document.querySelector("#precipitation");
-let humidity = document.querySelector("#humidity");
-let wind = document.querySelector("#wind");
-let icon = document.querySelector("#main-icon");
+
 
 let apiKey = "e38520d0ab3c1731aad20e98add71987";
 
-function getFormatDate(event) {
+function getFormatDate(timestamp) {
   const options = {
-    weekday: "long",
-    month: "long",
+    weekday: "short",
+    month: "short",
     day: "numeric",
     hour: "2-digit",
     minute: "2-digit"
   };
-  return event.toLocaleDateString("en-US", options);
+  return timestamp.toLocaleDateString("en-US", options);
 }
-date.innerHTML = getFormatDate(new Date());
+dateElement.innerHTML = getFormatDate(new Date());
 
 function getFahrenheit(event) {
   event.preventDefault();
@@ -43,6 +39,10 @@ function getCelsius(event) {
 celsius.addEventListener("click", getCelsius);
 
 function showWeather(response) {
+  let description = document.querySelector("#description");
+  let humidity = document.querySelector("#humidity");
+  let wind = document.querySelector("#wind");
+  let icon = document.querySelector("#main-icon");
   let roundTemp = Math.round(response.data.main.temp);
   temp.innerHTML = roundTemp;
   description.innerHTML = `${response.data.weather[0].main}`;
@@ -50,6 +50,9 @@ function showWeather(response) {
   wind.innerHTML = `Wind: ${response.data.wind.speed} m/s`;
   icon.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   icon.setAttribute("alt", response.data.weather[0].main);
+  unixDate = response.data.dt * 1000;
+  unixDate = new Date(unixDate);
+  dateElement.innerHTML = getFormatDate(unixDate);
 }
 
 function getCity(event) {
@@ -81,3 +84,6 @@ function currentCity() {
 }
 currentCity();
 buttonCurent.addEventListener("click", currentCity);
+
+
+//change behavior of units

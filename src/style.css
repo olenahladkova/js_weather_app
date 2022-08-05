@@ -32,8 +32,14 @@ h5 {
   text-align: center;
 }
 
-h3 {
-  font-size: 28px !important;
+#temp {
+  font-size: 56px !important;
+}
+
+h3 a, h3 small {
+  position: relative;
+  top: -30px;
+  font-size: small;
 }
 
 p {

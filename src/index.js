@@ -39,6 +39,27 @@ function getCelsius(event) {
 }
 celsius.addEventListener("click", getCelsius);
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "";
+  let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  days.forEach(day => {
+    forecastHTML = forecastHTML + `
+      <div
+        class="col-sm m-2 p-2 bg-transparent shadow rounded text-center forecast" id="forecast"
+        style="--bs-bg-opacity: 0.5;"
+        >
+        <h5>${day}</h5>
+        <img src="./img/sun.png" alt="Sunny" />
+        <h4><span>31</span>°C</h4>
+        <p>Sunny</p>
+      </div>
+      `;
+  })
+  
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showWeather(response) {
   let description = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
@@ -86,3 +107,4 @@ function currentCity() {
 currentCity();
 buttonCurent.addEventListener("click", currentCity);
 
+displayForecast()

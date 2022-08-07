@@ -39,10 +39,11 @@ function getCelsius(event) {
 }
 celsius.addEventListener("click", getCelsius);
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
-  let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
   days.forEach(day => {
     forecastHTML = forecastHTML + `
       <div
@@ -60,6 +61,13 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getCoordinates(coordinates) {
+  console.log(coordinates);
+  let forecastApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  console.log(forecastApiUrl)
+  axios.get(forecastApiUrl).then(displayForecast);
+}
+
 function showWeather(response) {
   let description = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
@@ -75,6 +83,8 @@ function showWeather(response) {
   unixDate = response.data.dt * 1000;
   unixDate = new Date(unixDate);
   dateElement.innerHTML = getFormatDate(unixDate);
+
+  getCoordinates(response.data.coord);
 }
 
 function getCity(event) {
@@ -93,7 +103,7 @@ function currentCity() {
     let city = response.data.name;
     cityHeading.innerHTML = city;
     showWeather(response);
-    console.log(response)
+    //console.log(response)
   }
 
   function getCurrentCity(position) {
@@ -106,5 +116,3 @@ function currentCity() {
 }
 currentCity();
 buttonCurent.addEventListener("click", currentCity);
-
-displayForecast()

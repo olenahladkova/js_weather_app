@@ -22,6 +22,15 @@ function getFormatDate(timestamp) {
 }
 dateElement.innerHTML = getFormatDate(new Date());
 
+function getFormatForecastDate(timestamp) {
+  const options = {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  };
+  return timestamp.toLocaleDateString("en-US", options);
+}
+
 function getFahrenheit(event) {
   event.preventDefault();
   celsius.classList.remove("active");
@@ -40,22 +49,25 @@ function getCelsius(event) {
 celsius.addEventListener("click", getCelsius);
 
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
+  console.log(forecast);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "";
-  let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  days.forEach(day => {
-    forecastHTML = forecastHTML + `
-      <div
-        class="col-sm m-2 p-2 bg-transparent shadow rounded text-center forecast" id="forecast"
-        style="--bs-bg-opacity: 0.5;"
-        >
-        <h5>${day}</h5>
-        <img src="./img/sun.png" alt="Sunny" />
-        <h4><span>31</span>°C</h4>
-        <p>Sunny</p>
-      </div>
-      `;
+//  let days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  forecast.forEach((forecastDay, index) => {
+    if (index > 0 && index < 6) {
+      forecastHTML = forecastHTML + `
+        <div
+          class="col-sm m-2 p-2 bg-transparent shadow rounded text-center forecast" id="forecast"
+          style="--bs-bg-opacity: 0.5;"
+          >
+          <h5>${getFormatForecastDate(new Date(forecastDay.dt * 1000))}</h5>
+          <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="${forecastDay.weather[0].main}" />
+          <h4><span>${Math.round(forecastDay.temp.day)}</span>°C / <span>${Math.round(forecastDay.temp.night)}</span>°C</h4>
+          <p>${forecastDay.weather[0].main}</p>
+        </div>
+        `;
+    }
   })
   
   forecastElement.innerHTML = forecastHTML;
